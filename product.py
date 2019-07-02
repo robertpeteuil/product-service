@@ -102,15 +102,7 @@ prods = [{ 'inv_id': 1, 'name':'jncos', 'cost':35.57, 'img':None},
 @app.route("/product", methods=['GET'])
 def get_products():
     res = get_products_from_db()
-    datacenter = app.config['CONFIG'].get('datacenter')
-    configuration = app.config['CONFIG'].get()
-    # del configuration.run
-    # del configuration.datacenter
-    # return jsonify({'res': res, 'instance_id': app.config['INSTANCE_ID'], 'conf': app.config['CONFIG'].get()})
-    return jsonify(
-        {'res': res, 'instance_id': app.config['INSTANCE_ID'],
-         'addr': os.environ.get(PRODUCT_ADDR),
-         'dc': datacenter, 'conf': configuration})
+    return jsonify({'res': res, 'instance_id': app.config['INSTANCE_ID'], 'conf': app.config['CONFIG'].get()})
 
 @app.route("/product/healthz", methods=['GET'])
 def get_health():
